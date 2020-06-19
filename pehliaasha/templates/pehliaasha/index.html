@@ -1,0 +1,197 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <base href="/">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+    <link rel="icon" href="{% static 'pehliaasha/images/logo.png' %}">
+    <link rel="stylesheet" href="{% static 'pehliaasha/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'pehliaasha/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'pehliaasha/css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'pehliaasha/css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'pehliaasha/css/gallery.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Bellota&family=Bree+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></head>
+<body ng-app='ngo'>
+    
+<!-- window navbar start -->
+    <div id="win-nav" class="justify-content-between">
+        <div class="ngo-logo">
+            <a href="/"><img src="{% static 'pehliaasha/images/logo.png' %}" alt="pehli aasha" class="logo m-2 animated slideInLeft"></a>
+        </div>
+        <div id="nav-list" class="d-flex justify-content-center align-items-center mr-2">
+            <div class="m-3 animated slideInDown"><a href="/" class="win-nav-item pl-2">Home</a></div>
+            <div class="m-3 animated slideInDown delay-02s"><a href="/donate" class="win-nav-item pl-2">Donate</a></div>
+            <div class="m-3 animated slideInDown delay-04s"><a href="/contact" class="win-nav-item pl-2">Contact</a></div>
+            <div class="m-3 animated slideInDown delay-06s"><a href="/team" class="win-nav-item pl-2">Team</a></div>
+            <div class="m-3 animated slideInDown delay-08s"><a href="/join-pehli-aasha" class="win-nav-item pl-2">Join us</a></div>
+            <div class="m-3 animated slideInDown delay-1s"><a href="/gallery" class="win-nav-item pl-2">Gallery</a></div>
+        </div>
+    </div><br><br><br>
+<!-- window navbar end -->
+
+<!-- mobile navbar start -->
+
+    <div id="mob-nav" class="justify-content-between">
+        <div class="animated rubberBand">
+            <a href="/"><img src="{% static 'pehliaasha/images/logo.png' %}" alt="pehli aasha" class="mob-logo m-2"></a>
+        </div>
+        <div id="burger" class="d-flex align-items-center animated bounce"> 
+            <div class="mr-2 pr-3">&#9776;</div>
+        </div>
+    </div>
+
+    <div id="mob-navbar" class="d-flex justify-content-center align-items-center">
+        <div id="close">&#10006;</div>
+        <div id="nav-container" class="d-flex justify-content-center align-items-center">
+            <div><i class="fas fa-home"></i><a href="/" class="mob-item m-2">Home</a></div>
+            <div><i class="fas fa-hand-holding-usd"></i><a href="/donate" class="mob-item m-2">Donate</a></div>
+            <div><i class="fas fa-smile"></i><a href="/contact" class="mob-item m-2">contact</a></div>
+            <div><i class="fas fa-users"></i><a href="/team" class="mob-item m-2">Team</a></div>
+            <div><i class="fas fa-user-plus"></i><a href="/join-pehli-aasha" class="mob-item m-2">Join us</a></div>
+            <div><i class="fas fa-photo-video"></i><a href="/gallery" class="mob-item m-2">Gallery</a></div>
+        </div>
+    </div>
+<!-- mobile navbar end -->
+
+<!-- container start -->
+
+<div ng-view id="view-container"></div>
+
+
+<!-- footer -->
+<div id="footer" style="font-family: 'Bellota', cursive;">
+
+    <div class="d-flex justify-content-center top-footer" style="border-top:1px dashed #FC4A4A;border-bottom:1px dashed #FC4A4A;font-size: 40px;background-color: #f8d7e1;">
+        <div class="donate-footer text-center" style="width: 50vw;border-right: 1px solid #FC4A4A;">
+            <a href="/join-pehli-aasha" class="mob-item " ><div><i class="fas fa-user-plus"></i><span class="p-2">Join us</span></div></a>
+        </div>
+        <div class="join-footer text-center" style="width: 50vw;">
+            <a href="/donate" class="mob-item " ><div><i class="fas fa-hand-holding-usd"></i><span class="p-2">Donate</span></div></a>
+        </div>
+    </div>
+    
+    <div class="content-footer pt-3">
+        <div class="row m-0">
+            <div class="col-md-3 col-lg-3 col-xl-3">
+                <div class="about-us-footer text-center" style="font-size: 25px;font-weight: bolder;color:crimson;">
+                    ABOUT US
+                </div>
+                <div class="text-left">
+                    Pehli Aasha Foundation is an NGO in
+                    India benefitting
+                    over hunders of children
+                    and their families every year,
+                    through more than 400 live welfare
+                    projects on education, healthcare,
+                    livelihood and women empowerment,
+                    in over 2000 remote villages
+                    and slums across 25
+                    states of India.
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3 col-xl-3">
+                <div class="text-center" style="font-size: 25px;font-weight: bolder;color:crimson;">
+                    WHAT WE DO?
+                </div>
+                <div class="work-footer text-center">
+                    <div>Child Education</div>
+                    <div>Helps poor families</div>
+                    <div>Save the environment</div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3  text-left ">
+                <div class="content">
+                    <div><a href="gallery">Gallery</a></div>
+                    <div><a href="contact">Contact</a></div>
+                    <div><a href="team">Team</a></div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="subscribe-form mt-3">
+                    <form  novalidate name="subsForm" id="subsForm" ng-controller='subscribeCtrl'>
+                        <div class="d-flex justify-content-center">
+                            <div class="form-group ">
+                                <input type="email" name="visitorName" ng-model='visitorName' required placeholder='Enter your email address'>
+                                <small ng-show='subsForm.visitorName.$dirty' style="color: red; display: block;" >
+                                    <span ng-show='subsForm.visitorName.$error.required'>Email Address is Required to subscribe</span>
+                                    <span ng-show='subsForm.visitorName.$invalid' ng-hide='subsForm.visitorName.$error.required'>Invalid Email Address</span>
+                                </small>
+                                <small ng-hide='status == "wrong"'  style="display: block;">
+                                    <span ng-if="status == 'true'"  style="color: green;">Thank you subscribing</span>
+                                    <span ng-if="status == 'false'"  style="color: red;">Something wrong try again</span>
+                                    <span ng-if="status == 'already'" style="color: green;">You have already subscribed!</span>
+                                </small>
+                            </div>
+                            <div class="form-group pl-3">
+                                <button  ng-disabled='subsForm.$invalid' ng-click='subscribe()'>
+                                    <span ng-if='!sending'> SUBSCRIBE </span>
+                                    <span ng-if='sending'>
+                                        SUBSCRIBING 
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="social-media d-flex justify-content-center align-items-center">
+        <div class="fb"><a href="https://www.facebook.com/pehliasha/" target="_blank"><i class="fab fa-facebook-f"></i></a></div>
+        <div class="insta"><a href="https://instagram.com/pehliaasha?igshid=i3cpvhdwmyex" target="_blank"><i class="fab fa-instagram"></i></a></div>
+        <div class="twitter"><a href="" target="_blank"><i class="fab fa-twitter"></i></a></div>
+        <div class="call"><a href="tel:8700609911" ><i class="fas fa-mobile-alt"></i></a></div>
+    </div>
+    
+    <div class="copyright row m-0 text-center" style="background-color: #f8d7e1;">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">Made with <span class="pl-2 pr-2"><i class="fas fa-heart"></i></span> and <span class="pr-2 pl-2"><i class="fas fa-mug-hot"></i></span> By <a href="">Kuldeep Rawat</a></div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"><span class="pr-2"><i class="far fa-copyright"></i></span> Pehli Aasha Foundation. All rights reserved</div>
+    </div>
+    
+</div>
+    
+<!-- container end -->
+
+<!-- page scripts start -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script>
+        let myApp = angular.module('ngo',['ngRoute','scroll']);
+        
+        window.csrf_token = '{{ csrf_token }}'
+        myApp
+        .config(($interpolateProvider)=>{
+            $interpolateProvider.startSymbol('[[')
+            $interpolateProvider.endSymbol(']]')
+        })
+        .config(['$httpProvider',function($httpProvider){
+            $httpProvider.defaults.headers.common['X-CSRFToken'] = window.csrf_token
+        }])
+    </script>
+    <script src="{% static 'pehliaasha/js/app.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-route.js"></script>
+    <script src="{% static 'pehliaasha/js/resources/resource.js' %}"></script>
+    <script src="{% static 'pehliaasha/js/routers/router.js' %}"></script>
+    <script src="{% static 'pehliaasha/js/controllers/contact-form.js' %}"></script>
+    <script src="{% static 'pehliaasha/js/controllers/scroll.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js" integrity="sha256-2p2tRZlPowp3P/04Pw2rqVCSbhyV/IB7ZEVUglrDS/c=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js" integrity="sha256-+9YNuItWuR4sbqeaNiJOxG0BvptYz4fbUXbIZoH5Jwo=" crossorigin="anonymous"></script>
+    <!-- <script src="{% static 'pehliaasha/js/homeScroll.js' %}"></script> -->
+    <script src="{% static 'pehliaasha/js/controllers/subscribeCtrl.js' %}"></script>
+    <script src="{% static 'pehliaasha/js/controllers/noticeCtrl.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/9d97cdfadb.js" crossorigin="anonymous"></script>
+<!-- page scripts end -->
+</body>
+</html>
