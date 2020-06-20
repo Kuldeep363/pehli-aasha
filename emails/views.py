@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.conf import settings
-from django.core.mail import EmailMultiAlternatives
+# from django.core.mail import EmailMultiAlternatives, send_mail
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 from .models import subscriber
 
 import re
@@ -18,21 +20,48 @@ def contact(request):
     if userMail == '' or userMail == None or msg == '' or msg == None or name == '' or name == None or re.search('[0-9!@#$%^&*<>/?":;]',name) :
         return Response({'msg':'false'})
     if  re.search('\"?([-a-zA-Z0-9.`?{}]+@\w+\.\w+)\"?',userMail):
-        to='pehliaashasansthan@gmail.com'
-        subject = 'Someone wants to connect with us'
-        html_content='<h1> Hello Pehli Aasha Foundation,</h1><p><strong>'+name+'</strong> wants to connect with us</p><br><table style="text-align:center;border:1px solid black;border-collapse:collapse"><tr style="border:1px solid black;border-collapse:collapse"><th style="border:1px solid black;border-collapse:collapse">Name</th><th style="border:1px solid black;border-collapse:collapse">Email Address</th></tr><tr style="border:1px solid black;border-collapse:collapse"><td style="border:1px solid black;border-collapse:collapse">'+name+'</td><td style="border:1px solid black;border-collapse:collapse">'+userMail+'</td></tr><tr  style="border:1px solid black;border-collapse:collapse"><th style="border:1px solid black;border-collapse:collapse" colspan="2">Message</th></tr><tr style="border:1px solid black;border-collapse:collapse"><td style="border:1px solid black;border-collapse:collapse" colspan="2">'+msg+'</td></tr><table>'
-        result = EmailMultiAlternatives(subject,msg,settings.EMAIL_HOST_USER,[to])
-        result.attach_alternative(html_content,'text/html')
-        result.send()
 
-    # '\"?([-a-zA-Z0-9.`?{}]+@\w+\.\w+)\"?'
-        subject = 'Thanks for connecting with us'
-        html_content='<div style="text-align:center;"><img src="https://drive.google.com/thumbnail?id=1m4FjDxtGVlp8rFcie5ljdEoOGAC1xYIQ" alt="pehli aasha foundation"></div><h1> Namaste '+name+',</h1><p>Thanks for connecting with us,we will contact you soon 🙏</p><div style="text-align:center;"><a href="https://pehliaasha.com" style="text-decoration:none;color:black;"><button style="background-color:#0cda6fc7;width:200px;height:50px;border:none;border-radius:5px">Click here 👆</button></a></div>'
-        result = EmailMultiAlternatives(subject,msg,settings.EMAIL_HOST_USER,[userMail])
-        result.attach_alternative(html_content,'text/html')
-        result.send()
-        
-        return Response({'msg':'true'})
+        # to us
+        TEMPLATE_ID = 'd-dd7f766ae8b54b3386b3acde943571a7'
+        FROM_ID = 'pehliaashasansthan@gmail.com'
+        message = Mail(
+            from_email = FROM_ID,
+            to_emails = 'agamr470@gmail.com'
+        )
+        message.dynamic_template_data = {
+            "name" : name,
+            "email" : userMail,
+            "message" : msg
+        }
+        # print('name:{0},email:{1},msg:{2}'.format(name,userMail,msg),)
+        message.template_id = TEMPLATE_ID
+
+        try:
+            send = SendGridAPIClient('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')
+            response = send.send(message)
+        except Exception as e:
+            print(e)
+            return Response({'msg':'false'})
+
+        # to the user
+        TEMPLATE_ID = 'd-ad0a2cedc0bc41afbbadcafc9cfdb376'
+        FROM_ID = 'pehliaashasansthan@gmail.com'
+        message = Mail(
+            from_email=FROM_ID,
+            to_emails=userMail
+        )
+        message.dynamic_template_data={
+            "name" : name
+        }
+        message.template_id = TEMPLATE_ID
+
+        try:
+            send = SendGridAPIClient('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')
+            response = send.send(message)
+            return Response({'msg':'true'})
+        except Exception as e:
+            print(e)
+            return Response({'msg':'false'})
     else:
         return Response({'msg':'false'})
 
@@ -49,14 +78,21 @@ def subscribe(request):
             email = None
         if email == None:
             
+            TEMPLATE_ID = 'd-4b69550f47244e7fa44c5d2c991e5efd'
+            FROM_ID = 'pehliaashasansthan@gmail.com'
+            message = Mail(
+                from_email = FROM_ID,
+                to_emails = mail
+            )
 
-            # settings.EMAIL_HOST_USER = 'pehliaashasansthan@gmail.com'
-            # settings.EMAIL_HOST_PASSWORD='pehliaasha@363'
-            subject = 'Thanks for subscribing '
-            html_content='<div style="text-align:center;"><img src="https://drive.google.com/thumbnail?id=1m4FjDxtGVlp8rFcie5ljdEoOGAC1xYIQ" alt="pehli aasha foundation"></div><p>Thanks for subscribing PEHLI AASHA FOUNDATION 🙏</p><p>Now you can get latest activities update of PEHLI AASHA FOUNDATION.</p><p>Hope you will have a nice experience with us.</p><div style="text-align:center;"><a href="https://pehliaasha.com" style="text-decoration:none;color:black;"><button style="background-color:#0cda6fc7;width:100px;height:30px;border:none;border-radius:10px">Click here 👆</button></a></div>'
-            result = EmailMultiAlternatives(subject,settings.EMAIL_HOST_USER,[mail])
-            result.attach_alternative(html_content,'text/html')
-            result.send()
+            message.template_id = TEMPLATE_ID
+
+            try:
+                send = SendGridAPIClient('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')
+                response = send.send(message)
+            except Exception as e:
+                print(e)
+                return Response({'msg':'false'})
             
             email = subscriber(email=mail)
             email.save()
