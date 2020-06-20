@@ -15,6 +15,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['pehliaasha.herokuapp.com']
 
+SITE_ID = 1
 
 
 EMAIL_USE_TLS=True
