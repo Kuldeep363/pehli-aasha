@@ -126,6 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'pehliaasha/static')
+]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
@@ -134,9 +137,9 @@ AWS_ACCESS_KEY_ID = 'AKIAVCY3CKR47XQZZG54'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'pehliaashango'
 
-AWS_LOCATION = 'static'
-AWS_MEDIA_LOCATION = 'media'
-STATIC_URL = 'https://pehliaashango.s3-us-west-1.amazonaws.com/static'
+# AWS_LOCATION = 'static'
+# AWS_MEDIA_LOCATION = 'media'
+# STATIC_URL = 'https://pehliaashango.s3-us-west-1.amazonaws.com/static'
 
 AWS_S3_FILE_OVERWRITE = False 
 AWS_DEFAULT_ACL = None
