@@ -26,8 +26,6 @@ def contact(request):
         result.send()
 
     # '\"?([-a-zA-Z0-9.`?{}]+@\w+\.\w+)\"?'
-        settings.EMAIL_HOST_USER = 'pehliaashasansthan@gmail.com'
-        settings.EMAIL_HOST_PASSWORD='pehliaasha@363'
         subject = 'Thanks for connecting with us'
         html_content='<div style="text-align:center;"><img src="https://drive.google.com/thumbnail?id=1m4FjDxtGVlp8rFcie5ljdEoOGAC1xYIQ" alt="pehli aasha foundation"></div><h1> Namaste '+name+',</h1><p>Thanks for connecting with us,we will contact you soon 🙏</p><div style="text-align:center;"><a href="https://pehliaasha.com" style="text-decoration:none;color:black;"><button style="background-color:#0cda6fc7;width:200px;height:50px;border:none;border-radius:5px">Click here 👆</button></a></div>'
         result = EmailMultiAlternatives(subject,msg,settings.EMAIL_HOST_USER,[userMail])
@@ -52,8 +50,8 @@ def subscribe(request):
         if email == None:
             
 
-            settings.EMAIL_HOST_USER = 'pehliaashasansthan@gmail.com'
-            settings.EMAIL_HOST_PASSWORD='pehliaasha@363'
+            # settings.EMAIL_HOST_USER = 'pehliaashasansthan@gmail.com'
+            # settings.EMAIL_HOST_PASSWORD='pehliaasha@363'
             subject = 'Thanks for subscribing '
             html_content='<div style="text-align:center;"><img src="https://drive.google.com/thumbnail?id=1m4FjDxtGVlp8rFcie5ljdEoOGAC1xYIQ" alt="pehli aasha foundation"></div><p>Thanks for subscribing PEHLI AASHA FOUNDATION 🙏</p><p>Now you can get latest activities update of PEHLI AASHA FOUNDATION.</p><p>Hope you will have a nice experience with us.</p><div style="text-align:center;"><a href="https://pehliaasha.com" style="text-decoration:none;color:black;"><button style="background-color:#0cda6fc7;width:100px;height:30px;border:none;border-radius:10px">Click here 👆</button></a></div>'
             result = EmailMultiAlternatives(subject,settings.EMAIL_HOST_USER,[mail])

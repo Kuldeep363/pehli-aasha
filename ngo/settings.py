@@ -21,7 +21,7 @@ SITE_ID = 1
 EMAIL_USE_TLS=True
 EMAIL_HOST='smtp.sendgrid.net'
 EMAIL_PORT=587
-EMAIL_HOST_USER='pehliaashasansthan363rawat'
+EMAIL_HOST_USER='apikey'
 EMAIL_HOST_PASSWORD='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'
 
 
