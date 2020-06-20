@@ -42,7 +42,7 @@ myApp
         console.log('submit')
         let req = {
             method:'POST',
-            url:'http://127.0.0.1:8000/api/email/contact',
+            url:'https://pehliaasha.herokuapp.com/api/email/contact',
             data:{
                 'pName':$scope.pName,
                 'pEmail':$scope.pEmail,
@@ -104,7 +104,7 @@ myApp
         fd.append('image', $scope.file.image);
         $http({
             method: 'POST',
-            url: 'http://127.0.0.1:8000/api/details/join-data',
+            url: 'https://pehliaasha.herokuapp.com/api/details/join-data',
             data: fd,
             transformRequest: angular.identity,
             headers: {

@@ -3,7 +3,7 @@ myApp
     $scope.notices = ''
     let apiData = {
         method:'POST',
-        url:'http://127.0.0.1:8000/api/details/get-notices',
+        url:'https://pehliaasha.herokuapp.com/api/details/get-notices',
         headers:{
             'Content-Type':'application/json'
         }

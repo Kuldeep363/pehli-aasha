@@ -9,7 +9,7 @@ myApp
         $scope.sending = true
         let context = {
             method:'POST',
-            url:'http://127.0.0.1:8000/api/email/subscribe',
+            url:'https://pehliaasha.herokuapp.com/api/email/subscribe',
             data:{
                 mail:$scope.visitorName
             }
