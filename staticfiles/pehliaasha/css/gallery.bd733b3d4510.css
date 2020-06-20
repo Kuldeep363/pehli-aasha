@@ -1,0 +1,8 @@
+@media(max-width:992px){
+    .gallery-svg svg{
+        width: 100%!important;
+    }
+    .gallery-title{
+        display: none!important;
+    }
+}

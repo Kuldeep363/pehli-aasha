@@ -1,0 +1,130 @@
+<div id="join-us" style="font-family: 'Bellota', cursive;">
+    <div class="row justify-content-center align-items-center m-0">
+        <div class="msg text-center col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" ng-hide='status == " "' style="font-size: 25px;">
+            <div ng-if="status=='true'" style="font-weight: bolder;">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    Thanks for making joining request, Please wait for a while, it will take maximum 2-3 days<br> Thank you 🌹
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="outline: none;">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div ng-if="status=='false'" style="font-weight: bolder;">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    There is some problem! Please try again 🚫
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="outline: none;">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="join-form-wrapper" class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 d-flex justify-content-center align-items-center">
+            <div id="join-form">
+                <form  autocomplete="off" name="joinForm" novalidate id='joinForm'>
+                    <div class="form-group text-center animated jello" style="font-size: 25px;font-weight: bolder;">
+                        JOIN PEHLI AASHA FOUNDATION
+                    </div>
+                    <div class="form-group">
+                        <label for="fName">First Name</label><br>
+                        <input type="text" name="fName" id="fName" ng-model='fName' p-name required class="animated lightSpeedIn delay-1s">
+                        <small style="color: red;">
+                            <span ng-show='joinForm.fName.$dirty'>
+                                <span ng-show='joinForm.fName.$error.required'>Please Enter Your First Name</span>
+                                <span ng-show='joinForm.fName.$error.nameValid'>Please enter valid name  </span>
+                            </span>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="lName">Last Name</label><br>
+                        <input type="text" name="lName" id="lName" ng-model='lName' p-name required class="animated lightSpeedIn delay-1s">
+                        <small style="color: red;">
+                            <span ng-show='joinForm.lName.$dirty'>
+                                <span ng-show='joinForm.lName.$error.required'>Please Enter Your Last Name</span>
+                                <span ng-show='joinForm.lName.$error.nameValid'>Please enter valid name  </span>
+                            </span>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">D.O.B</label><br>
+                        <input type="date" name="dob" id="dob" ng-model='dob' required class="animated lightSpeedIn delay-1s">
+                        <small style="color: red;">
+                            <span ng-show='joinForm.dob.$dirty'>
+                                <span ng-show='joinForm.dob.$error.required'>Please Enter Your DOB</span>
+                            </span>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="pEmail">Email ID</label><br>
+                        <input type="email" name="pEmail" id="pEmail" ng-model='pEmail' required class="animated lightSpeedIn delay-1s">
+                        <small style="color: red;">
+                            <span ng-show='joinForm.pEmail.$dirty && joinForm.pEmail.$invalid'>
+                                <span ng-show='joinForm.pEmail.$error.required'>
+                                    We need your email to contact you
+                                </span>
+                                <span ng-show='joinForm.pEmail.$error.email'>
+                                    Invalid email address
+                                </span>
+                            </span>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label><br>
+                        <input type="text" name="phone" id="phone" ng-model='phone' required class="animated lightSpeedIn delay-1s">
+                        <small style="color: red;">
+                            <span ng-show='joinForm.phone.$dirty && joinForm.phone.$invalid'>
+                                <span ng-show='joinForm.phone.$error.required'>
+                                    We need your phone number to contact you
+                                </span>
+                                <span ng-show='joinForm.phone.$error.email'>
+                                    Invalid email address
+                                </span>
+                            </span>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="org">Organization/College <span style="color: blue;">(OPTIONAL)</span></label><br>
+                        <input type="text" name="org" id="org" ng-model='org' class="animated lightSpeedIn delay-1s">
+                    </div>
+                    <div class="form-group">
+                        <button id="upload" ng-click='upload()' class="animated lightSpeedIn delay-1s">
+                            <span>ID PROOF</span>
+                            <span class="pl-2"><i class="fas fa-upload"></i></span>
+                        </button><br>
+                        <input type="file" name="id" id="id"  accept="image/*"  file-model='file.image' style="display: none;" required>
+                        <small style="color: blue;">
+                            It's only for verification,will be deleted after verification
+                        </small>
+                        <small style="color: red;">
+                            <span ng-show='joinForm.id.$touched'>
+                                <span ng-show='joinForm.id.$error.required'>
+                                    Please upload your id proof for verification
+                                </span>
+                            </span>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="pMsg">Message<span style="color: blue;">(OPTIONAL)</span></label><br>
+                        <textarea name="pMsg" id="pMsg" ng-model='pMsg' class="animated lightSpeedIn delay-1s"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="accept" id="accept" ng-model='accept' required class="join-check animated lightSpeedIn delay-1s">
+                        <label for="accept" class="pl-2">I'm ready to help people</label>
+                    </div>
+                    <div class="form-group text-center">
+                        <button  ng-disabled='joinForm.$invalid' ng-click='passData()' class="animated rubberBand delay-2s">
+                            <span ng-if='!sending'>
+                                JOIN
+                                <span class="p-2" ><i class="fas fa-file-signature"></i></span>
+                            </span>
+                            <span ng-if='sending' class="d-flex justify-content-center">
+                                JOINING <span class="animated loading delay-02s" style="font-weight: bolder;">&#9679;</span><span class="animated loading delay-04s" style="font-weight: bolder;">&#9679;</span><span class="animated loading delay-06s" style="font-weight: bolder;">&#9679;</span>
+                            </span>                            
+                        </button>
+                    </div>
+                </form>
+                <!-- [[joinForm.$error]] -->
+                
+            </div>
+        </div>
+    </div>
+</div>

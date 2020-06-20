@@ -1,0 +1,38 @@
+#get-in-touch{
+    height: 70vh;
+}
+#contact-form button{
+    width: 50%;
+    background-color: aqua;
+    cursor: pointer;
+}
+.git{
+    display: none;
+}
+@media(max-width:992px){
+    .contact-svg{
+        display: none!important;
+    }
+    .git{
+        display: block;
+    }
+}
+.contact-team:hover .mob-call{
+    animation: shake 0.2s linear infinite alternate;
+    transform-origin: bottom;
+    transform-box: fill-box;
+}
+@keyframes shake{
+    0%{
+        transform: rotateZ(15deg);
+    }
+    50%{
+        transform: rotateZ(0);
+    }
+    100%{
+        transform: rotateZ(-15deg);
+    }
+}
+#get-in-touch a{
+    color: darkmagenta;
+}
