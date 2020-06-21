@@ -80,13 +80,17 @@ myApp
 .controller('joinCtrl',function($scope,$http){
     $scope.fName = $scope.lName = $scope.dob = $scope.pEmail = $scope.phone = $scope.org = $scope.pMsg = $scope.accept = ''
     $scope.sending = false
+    $scope.ticked = false
+    $scope.clicked = false
     $scope.upload = function(){
         document.querySelector('#joinForm #id').click()
+        $scope.ticked = true
     }
     
     $scope.status = ' '
     
     $scope.passData = ()=>{
+        $scope.clicked = true
         $scope.sending = true
         let datas = {
             firstName: $scope.fName,

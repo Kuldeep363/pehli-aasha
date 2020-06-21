@@ -8,6 +8,8 @@ from rest_framework.response import Response
 from rest_framework.generics import ListAPIView
 import json
 from datetime import datetime
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 from django.core.files.storage import FileSystemStorage
 # Create your views here.
@@ -16,6 +18,26 @@ def dataUpload(request):
     data = json.loads(request.POST['model'])
     print(data,'\n',request.FILES)
     if data['firstName'] == '' or data['lastName'] == '' or data['dob'] == '' or data['phone'] == '' or data['email'] == '' or data['condition'] == '' or request.FILES['image'] == '' or request.FILES['image'] == None:
+        return Response({'msg':'false'})
+
+    TEMPLATE_ID = 'd-625263b291ea4daa81874ffab170a132'
+    FROM_ID = 'pehliaashasansthan@gmail.com'
+
+    message = Mail(
+        from_email = FROM_ID,
+        to_emails = data['email']
+    )
+
+    message.dynamic_template_data = {
+        "name" : data['firstName']
+    }
+
+    message.template_id = TEMPLATE_ID
+
+    try:
+        send = SendGridAPIClient("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")
+        response = send.send(message)
+    except:
         return Response({'msg':'false'})
     members(firstName=data['firstName'],lastName=data['lastName'],dob=data['dob'][:10],phone=data['phone'],email=data['email'],condition=data['condition'],organization=data['organization'],msg=data['msg'],idProof=request.FILES['image']).save()
     return Response({'msg':'true'})
